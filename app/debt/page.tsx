@@ -67,11 +67,13 @@ export default function DebtDashboard() {
   const yearTotal = estimatedYearTotal(debts);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-[#ededed] p-8">
-      <div className="max-w-7xl mx-auto space-y-8">
-        <header className="mb-8">
-          <h1 className="text-4xl font-bold">Eldern Debts</h1>
-          <p className="text-gray-400 mt-2">Debt tracking and payoff simulation</p>
+    <div className="min-h-screen text-[#ededed] p-10">
+      <div className="max-w-7xl mx-auto space-y-10">
+        <header className="mb-10">
+          <h1 className="text-5xl font-bold tracking-tight mb-3 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            Eldern Debts
+          </h1>
+          <p className="text-gray-400 text-lg font-medium">Debt tracking and payoff simulation</p>
         </header>
 
         <TodayBanner debts={debts} onPaymentClick={setLogPaymentDebtId} />
@@ -84,7 +86,7 @@ export default function DebtDashboard() {
           totalDebt={totals.totalDebt}
         />
 
-        <div className="grid grid-cols-2 gap-8">
+        <div className="grid grid-cols-2 gap-10">
           <StrategyPanel
             debts={debts}
             preferences={preferences}

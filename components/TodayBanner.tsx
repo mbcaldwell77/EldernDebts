@@ -23,22 +23,22 @@ export function TodayBanner({ debts, onPaymentClick }: TodayBannerProps) {
   }
   
   return (
-    <div className="bg-orange-900/50 border border-orange-800 rounded-2xl p-6">
-      <div className="flex items-center justify-between">
+    <div className="bg-gradient-to-r from-orange-900/60 to-orange-800/40 backdrop-blur-sm border border-orange-700/50 rounded-card-lg p-6 shadow-elegant-lg">
+      <div className="flex items-center justify-between flex-wrap gap-4">
         <div>
-          <h3 className="text-lg font-semibold text-orange-200 mb-1">
+          <h3 className="text-xl font-bold text-orange-200 mb-2 tracking-tight">
             {dueToday.length} {dueToday.length === 1 ? 'debt' : 'debts'} due today
           </h3>
-          <p className="text-sm text-orange-300">
+          <p className="text-sm text-orange-300/90 font-medium">
             Mark them as paid to update your totals
           </p>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-3 flex-wrap">
           {dueToday.map((debt) => (
             <button
               key={debt.id}
               onClick={() => onPaymentClick(debt.id)}
-              className="px-4 py-2 bg-orange-600 hover:bg-orange-700 rounded-lg text-sm font-medium transition-colors duration-150"
+              className="px-6 py-3 bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-orange-400 rounded-full text-sm font-semibold text-white transition-smooth shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50"
             >
               Mark {debt.name} Paid
             </button>

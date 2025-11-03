@@ -25,22 +25,32 @@ export function HeroCounters({
   };
 
   const cards = [
-    { label: 'This Week', value: thisWeek },
-    { label: 'Next Week', value: nextWeek },
-    { label: 'This Month', value: thisMonth },
-    { label: 'Year Estimate', value: yearTotal },
-    { label: 'Total Debt', value: totalDebt },
+    { label: 'This Week', value: thisWeek, accent: 'blue' },
+    { label: 'Next Week', value: nextWeek, accent: 'purple' },
+    { label: 'This Month', value: thisMonth, accent: 'green' },
+    { label: 'Year Estimate', value: yearTotal, accent: 'blue' },
+    { label: 'Total Debt', value: totalDebt, accent: 'red' },
   ];
 
   return (
-    <div className="grid grid-cols-5 gap-4">
+    <div className="grid grid-cols-5 gap-6">
       {cards.map((card) => (
         <div
           key={card.label}
-          className="bg-gray-900 rounded-2xl p-6 border border-gray-800 shadow-lg transition-all duration-200"
+          className="glass-card rounded-card-lg p-8 shadow-elegant glass-card-hover transition-smooth"
         >
-          <div className="text-sm text-gray-400 mb-2">{card.label}</div>
-          <div className={`text-2xl font-mono font-bold ${card.label === 'Total Debt' ? 'text-red-400' : 'text-white'}`}>
+          <div className="text-sm text-gray-400 mb-3 font-medium tracking-wide uppercase text-xs">
+            {card.label}
+          </div>
+          <div className={`text-3xl font-mono font-bold tracking-tight ${
+            card.label === 'Total Debt' 
+              ? 'text-red-400' 
+              : card.accent === 'blue'
+              ? 'text-blue-400'
+              : card.accent === 'purple'
+              ? 'text-purple-400'
+              : 'text-green-400'
+          }`}>
             {formatCurrency(card.value)}
           </div>
         </div>

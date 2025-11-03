@@ -73,11 +73,11 @@ export function PaymentClusterBar({ debts, showNextMonth }: PaymentClusterBarPro
   const COLORS = ['#3b82f6', '#8b5cf6', '#ec4899', '#f59e0b', '#10b981', '#6366f1'];
   
   return (
-    <div className="bg-gray-900 rounded-2xl p-6 border border-gray-800 shadow-lg">
-      <h2 className="text-xl font-semibold mb-4">Payment Schedule</h2>
-      <ResponsiveContainer width="100%" height={400}>
+    <div className="glass-card rounded-card-lg p-8 shadow-elegant transition-smooth">
+      <h2 className="text-2xl font-bold mb-6 tracking-tight">Payment Schedule</h2>
+      <ResponsiveContainer width="100%" height={420}>
         <BarChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.1)" />
           <XAxis
             dataKey="day"
             type="number"
@@ -85,9 +85,11 @@ export function PaymentClusterBar({ debts, showNextMonth }: PaymentClusterBarPro
             domain={[1, 31]}
             tickCount={16}
             stroke="#9ca3af"
+            tick={{ fill: '#9ca3af', fontSize: 12 }}
           />
           <YAxis
             stroke="#9ca3af"
+            tick={{ fill: '#9ca3af', fontSize: 12 }}
             tickFormatter={(value) =>
               new Intl.NumberFormat('en-US', {
                 style: 'currency',
@@ -97,6 +99,12 @@ export function PaymentClusterBar({ debts, showNextMonth }: PaymentClusterBarPro
             }
           />
           <Tooltip
+            contentStyle={{
+              backgroundColor: 'rgba(26, 26, 26, 0.95)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              borderRadius: '0.75rem',
+              backdropFilter: 'blur(12px)',
+            }}
             formatter={(value: number) =>
               new Intl.NumberFormat('en-US', {
                 style: 'currency',
@@ -104,13 +112,17 @@ export function PaymentClusterBar({ debts, showNextMonth }: PaymentClusterBarPro
               }).format(value)
             }
           />
-          <Legend />
+          <Legend
+            wrapperStyle={{ paddingTop: '20px' }}
+            iconType="square"
+          />
           {creditorNames.map((name, index) => (
             <Bar
               key={name}
               dataKey={name}
               stackId="a"
               fill={COLORS[index % COLORS.length]}
+              radius={[0, 0, 4, 4]}
             />
           ))}
         </BarChart>

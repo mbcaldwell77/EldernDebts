@@ -63,61 +63,61 @@ export function EditDebtModal({ debtId, onClose }: EditDebtModalProps) {
   }
   
   return (
-    <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
-      <div className="bg-gray-900 rounded-2xl border border-gray-800 shadow-xl max-w-md w-full">
-        <div className="p-6">
-          <h2 className="text-2xl font-bold mb-4">Edit Debt</h2>
+    <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4 transition-smooth">
+      <div className="glass-card rounded-card-lg shadow-elegant-lg max-w-md w-full transition-smooth">
+        <div className="p-8">
+          <h2 className="text-3xl font-bold mb-6 tracking-tight">Edit Debt</h2>
           
-          <div className="space-y-4">
+          <div className="space-y-6">
             <div>
-              <label className="block text-sm text-gray-400 mb-1">Debt Name</label>
-              <div className="text-lg font-semibold">{debt.name}</div>
+              <label className="block text-sm text-gray-400 mb-2 font-medium tracking-wide">Debt Name</label>
+              <div className="text-xl font-bold">{debt.name}</div>
             </div>
             
             <div>
-              <label className="block text-sm text-gray-400 mb-1">Monthly Payment</label>
+              <label className="block text-sm text-gray-400 mb-3 font-medium tracking-wide">Monthly Payment</label>
               <input
                 type="number"
                 step="0.01"
                 value={monthlyPayment}
                 onChange={(e) => setMonthlyPayment(e.target.value)}
-                className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white font-mono"
+                className="w-full glass-card rounded-card px-5 py-3 text-white font-mono text-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-smooth"
               />
             </div>
             
             <div>
-              <label className="block text-sm text-gray-400 mb-1">Due Day (1-31)</label>
+              <label className="block text-sm text-gray-400 mb-3 font-medium tracking-wide">Due Day (1-31)</label>
               <input
                 type="number"
                 min="1"
                 max="31"
                 value={dueDay}
                 onChange={(e) => setDueDay(e.target.value)}
-                className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white font-mono"
+                className="w-full glass-card rounded-card px-5 py-3 text-white font-mono text-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-smooth"
               />
             </div>
             
             <div>
-              <label className="block text-sm text-gray-400 mb-1">APR (%)</label>
+              <label className="block text-sm text-gray-400 mb-3 font-medium tracking-wide">APR (%)</label>
               <input
                 type="number"
                 step="0.01"
                 value={apr}
                 onChange={(e) => setApr(e.target.value)}
-                className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white font-mono"
+                className="w-full glass-card rounded-card px-5 py-3 text-white font-mono text-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-smooth"
               />
             </div>
             
-            <div className="pt-4 flex gap-3">
+            <div className="pt-4 flex gap-4">
               <button
                 onClick={onClose}
-                className="flex-1 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors duration-150"
+                className="flex-1 px-6 py-3 glass-card hover:border-gray-600 rounded-full font-semibold text-gray-300 hover:text-white transition-smooth"
               >
                 Cancel
               </button>
               <button
                 onClick={handleSave}
-                className="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium transition-colors duration-150"
+                className="flex-1 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 rounded-full font-semibold text-white transition-smooth shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50"
               >
                 Save Changes
               </button>

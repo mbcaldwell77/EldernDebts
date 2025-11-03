@@ -31,12 +31,12 @@ export function DebtRing({ debts, onDebtClick, selectedDebtId }: DebtRingProps) 
   };
 
   return (
-    <div className="bg-gray-900 rounded-2xl p-6 border border-gray-800 shadow-lg">
-      <h2 className="text-xl font-semibold mb-4">Debt Distribution</h2>
+    <div className="glass-card rounded-card-lg p-8 shadow-elegant transition-smooth">
+      <h2 className="text-2xl font-bold mb-6 tracking-tight">Debt Distribution</h2>
       {data.length === 0 ? (
-        <div className="text-gray-500 text-center py-8">No active debts</div>
+        <div className="text-gray-500 text-center py-12 text-lg">No active debts</div>
       ) : (
-        <ResponsiveContainer width="100%" height={300}>
+        <ResponsiveContainer width="100%" height={320}>
           <PieChart>
             <Pie
               data={data}
@@ -44,7 +44,7 @@ export function DebtRing({ debts, onDebtClick, selectedDebtId }: DebtRingProps) 
               cy="50%"
               labelLine={false}
               label={(props: any) => `${props.name}: ${(props.percent * 100).toFixed(0)}%`}
-              outerRadius={100}
+              outerRadius={110}
               fill="#8884d8"
               dataKey="value"
               onClick={handleClick}
@@ -54,17 +54,28 @@ export function DebtRing({ debts, onDebtClick, selectedDebtId }: DebtRingProps) 
                 <Cell
                   key={`cell-${index}`}
                   fill={COLORS[index % COLORS.length]}
-                  opacity={selectedDebtId === null || selectedDebtId === entry.id ? 1 : 0.3}
+                  opacity={selectedDebtId === null || selectedDebtId === entry.id ? 1 : 0.25}
+                  style={{ filter: selectedDebtId === null || selectedDebtId === entry.id ? 'drop-shadow(0 4px 6px rgba(0,0,0,0.3))' : 'none' }}
                 />
               ))}
             </Pie>
             <Tooltip
+              contentStyle={{
+                backgroundColor: 'rgba(26, 26, 26, 0.95)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                borderRadius: '0.75rem',
+                backdropFilter: 'blur(12px)',
+              }}
               formatter={(value: number) =>
                 new Intl.NumberFormat('en-US', {
                   style: 'currency',
                   currency: 'USD',
                 }).format(value)
               }
+            />
+            <Legend
+              wrapperStyle={{ paddingTop: '20px' }}
+              iconType="circle"
             />
           </PieChart>
         </ResponsiveContainer>

@@ -38,52 +38,52 @@ export function LogPaymentModal({ debtId, onClose }: LogPaymentModalProps) {
   }
   
   return (
-    <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
-      <div className="bg-gray-900 rounded-2xl border border-gray-800 shadow-xl max-w-md w-full">
-        <div className="p-6">
-          <h2 className="text-2xl font-bold mb-4">Log Payment</h2>
+    <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4 transition-smooth">
+      <div className="glass-card rounded-card-lg shadow-elegant-lg max-w-md w-full transition-smooth">
+        <div className="p-8">
+          <h2 className="text-3xl font-bold mb-6 tracking-tight">Log Payment</h2>
           
-          <div className="space-y-4">
+          <div className="space-y-6">
             <div>
-              <label className="block text-sm text-gray-400 mb-1">Debt</label>
-              <div className="text-lg font-semibold">{debt.name}</div>
+              <label className="block text-sm text-gray-400 mb-2 font-medium tracking-wide">Debt</label>
+              <div className="text-xl font-bold">{debt.name}</div>
             </div>
             
             <div>
-              <label className="block text-sm text-gray-400 mb-1">Amount</label>
+              <label className="block text-sm text-gray-400 mb-3 font-medium tracking-wide">Amount</label>
               <input
                 type="number"
                 step="0.01"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white font-mono"
+                className="w-full glass-card rounded-card px-5 py-3 text-white font-mono text-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-smooth"
                 placeholder="0.00"
               />
             </div>
             
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3 p-4 rounded-card glass-card">
               <input
                 type="checkbox"
                 id="count-toward-cycle"
                 checked={countTowardCycle}
                 onChange={(e) => setCountTowardCycle(e.target.checked)}
-                className="w-4 h-4"
+                className="w-5 h-5 rounded accent-blue-600 cursor-pointer"
               />
-              <label htmlFor="count-toward-cycle" className="text-sm text-gray-400 cursor-pointer">
+              <label htmlFor="count-toward-cycle" className="text-sm text-gray-300 cursor-pointer hover:text-white transition-smooth">
                 Count toward this payment cycle
               </label>
             </div>
             
-            <div className="pt-4 flex gap-3">
+            <div className="pt-4 flex gap-4">
               <button
                 onClick={onClose}
-                className="flex-1 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors duration-150"
+                className="flex-1 px-6 py-3 glass-card hover:border-gray-600 rounded-full font-semibold text-gray-300 hover:text-white transition-smooth"
               >
                 Cancel
               </button>
               <button
                 onClick={handleSubmit}
-                className="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium transition-colors duration-150"
+                className="flex-1 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 rounded-full font-semibold text-white transition-smooth shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50"
               >
                 Log Payment
               </button>

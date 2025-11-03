@@ -70,23 +70,24 @@ export function StrategyPanel({
     };
 
     return (
-        <div className="bg-gray-900 rounded-2xl p-6 border border-gray-800 shadow-lg">
-            <h2 className="text-xl font-semibold mb-4">Payoff Strategy</h2>
+        <div className="glass-card rounded-card-lg p-8 shadow-elegant transition-smooth">
+            <h2 className="text-2xl font-bold mb-6 tracking-tight">Payoff Strategy</h2>
 
-            <div className="space-y-6">
+            <div className="space-y-8">
                 <div>
-                    <label className="block text-sm text-gray-400 mb-2">
+                    <label className="block text-sm text-gray-400 mb-4 font-medium tracking-wide">
                         Strategy
                     </label>
-                    <div className="flex gap-2">
+                    <div className="flex gap-3">
                         {(['snowball', 'avalanche', 'hybrid'] as const).map((strategy) => (
                             <button
                                 key={strategy}
                                 onClick={() => handleStrategyChange(strategy)}
-                                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-150 ${preferences.strategy === strategy
-                                        ? 'bg-blue-600 text-white'
-                                        : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                                    }`}
+                                className={`px-6 py-3 rounded-full text-sm font-semibold transition-smooth ${
+                                    preferences.strategy === strategy
+                                        ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg shadow-blue-500/30'
+                                        : 'glass-card text-gray-300 hover:text-white hover:shadow-elegant'
+                                }`}
                             >
                                 {strategy.charAt(0).toUpperCase() + strategy.slice(1)}
                             </button>
@@ -95,52 +96,57 @@ export function StrategyPanel({
                 </div>
 
                 <div>
-                    <label className="block text-sm text-gray-400 mb-2">
-                        Extra Cash per Month: {formatCurrency(preferences.extraCash)}
+                    <label className="block text-sm text-gray-400 mb-4 font-medium tracking-wide">
+                        Extra Cash per Month: <span className="text-blue-400 font-mono font-bold">{formatCurrency(preferences.extraCash)}</span>
                     </label>
-                    <input
-                        type="range"
-                        min="0"
-                        max="1500"
-                        step="50"
-                        value={preferences.extraCash}
-                        onChange={(e) => handleExtraCashChange(Number(e.target.value))}
-                        className="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer"
-                    />
-                    <div className="flex justify-between text-xs text-gray-500 mt-1">
+                    <div className="relative">
+                        <input
+                            type="range"
+                            min="0"
+                            max="1500"
+                            step="50"
+                            value={preferences.extraCash}
+                            onChange={(e) => handleExtraCashChange(Number(e.target.value))}
+                            className="w-full h-3 bg-gray-800/50 rounded-full appearance-none cursor-pointer slider"
+                            style={{
+                                background: `linear-gradient(to right, rgba(59, 130, 246, 0.6) 0%, rgba(59, 130, 246, 0.6) ${(preferences.extraCash / 1500) * 100}%, rgba(255, 255, 255, 0.1) ${(preferences.extraCash / 1500) * 100}%, rgba(255, 255, 255, 0.1) 100%)`
+                            }}
+                        />
+                    </div>
+                    <div className="flex justify-between text-xs text-gray-500 mt-2">
                         <span>$0</span>
                         <span>$1,500</span>
                     </div>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-3 p-4 rounded-card glass-card">
                     <input
                         type="checkbox"
                         id="next-month-preview"
                         checked={preferences.showNextMonthPreview}
                         onChange={(e) => handleNextMonthPreviewChange(e.target.checked)}
-                        className="w-4 h-4"
+                        className="w-5 h-5 rounded accent-blue-600 cursor-pointer"
                     />
-                    <label htmlFor="next-month-preview" className="text-sm text-gray-400 cursor-pointer">
+                    <label htmlFor="next-month-preview" className="text-sm text-gray-300 cursor-pointer hover:text-white transition-smooth">
                         Show next month preview in payment schedule
                     </label>
                 </div>
 
                 {simulation && (
-                    <div className="space-y-3 pt-4 border-t border-gray-800">
-                        <div className="flex justify-between">
-                            <span className="text-gray-400">Months to Zero:</span>
-                            <span className="font-mono font-semibold">{simulation.monthsToZero}</span>
+                    <div className="space-y-4 pt-6 border-t border-gray-700/50">
+                        <div className="flex justify-between items-center">
+                            <span className="text-gray-400 font-medium">Months to Zero:</span>
+                            <span className="font-mono font-bold text-xl text-white">{simulation.monthsToZero}</span>
                         </div>
-                        <div className="flex justify-between">
-                            <span className="text-gray-400">Total Interest:</span>
-                            <span className="font-mono font-semibold text-red-400">
+                        <div className="flex justify-between items-center">
+                            <span className="text-gray-400 font-medium">Total Interest:</span>
+                            <span className="font-mono font-bold text-xl text-red-400">
                                 {formatCurrency(simulation.totalInterest)}
                             </span>
                         </div>
-                        <div className="flex justify-between">
-                            <span className="text-gray-400">First Payoff:</span>
-                            <span className="font-mono font-semibold text-green-400">
+                        <div className="flex justify-between items-center">
+                            <span className="text-gray-400 font-medium">First Payoff:</span>
+                            <span className="font-mono font-bold text-xl text-green-400">
                                 {simulation.firstPayoffInMonths} months
                             </span>
                         </div>
