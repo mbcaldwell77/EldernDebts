@@ -82,7 +82,7 @@ export function AccountsRail({
                         {badge.text}
                       </span>
                       {debt.autopay && (
-                        <span className="text-xs px-3 py-1.5 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 text-white font-semibold shadow-lg shadow-blue-500/30">
+                        <span className="text-xs px-3 py-1.5 rounded-full bg-gradient-to-r from-green-600 to-green-500 text-white font-semibold shadow-lg shadow-green-500/30">
                           Autopay
                         </span>
                       )}
@@ -95,7 +95,7 @@ export function AccountsRail({
                     <div className="flex items-center gap-6 text-sm mb-4">
                       <div>
                         <span className="text-gray-400">Payment: </span>
-                        <span className="font-mono font-bold text-blue-400">
+                        <span className="font-mono font-bold text-green-400">
                           {formatCurrency(debt.monthly_payment)}
                         </span>
                       </div>
@@ -115,7 +115,7 @@ export function AccountsRail({
                     
                     <div className="w-full bg-gray-800/50 rounded-full h-3 mb-4 overflow-hidden">
                       <div
-                        className="bg-gradient-to-r from-blue-600 to-blue-500 h-3 rounded-full transition-all duration-300 shadow-lg shadow-blue-500/30"
+                        className="bg-gradient-to-r from-green-600 to-green-500 h-3 rounded-full transition-all duration-300 shadow-lg shadow-green-500/30"
                         style={{ width: `${progress}%` }}
                       />
                     </div>
@@ -124,7 +124,7 @@ export function AccountsRail({
                   <div className="flex gap-3 ml-6">
                     <button
                       onClick={() => onLogPayment(debt.id)}
-                      className="px-5 py-2.5 text-sm font-semibold bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 rounded-full text-white transition-smooth shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50"
+                      className="px-5 py-2.5 text-sm font-semibold bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 rounded-full text-white transition-smooth shadow-lg shadow-green-500/30 hover:shadow-green-500/50"
                     >
                       Log
                     </button>

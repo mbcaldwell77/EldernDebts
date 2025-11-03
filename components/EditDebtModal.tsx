@@ -81,7 +81,7 @@ export function EditDebtModal({ debtId, onClose }: EditDebtModalProps) {
                 step="0.01"
                 value={monthlyPayment}
                 onChange={(e) => setMonthlyPayment(e.target.value)}
-                className="w-full glass-card rounded-card px-5 py-3 text-white font-mono text-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-smooth"
+                className="w-full glass-card rounded-card px-5 py-3 text-white font-mono text-lg focus:outline-none focus:ring-2 focus:ring-green-500/50 transition-smooth"
               />
             </div>
             
@@ -93,7 +93,7 @@ export function EditDebtModal({ debtId, onClose }: EditDebtModalProps) {
                 max="31"
                 value={dueDay}
                 onChange={(e) => setDueDay(e.target.value)}
-                className="w-full glass-card rounded-card px-5 py-3 text-white font-mono text-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-smooth"
+                className="w-full glass-card rounded-card px-5 py-3 text-white font-mono text-lg focus:outline-none focus:ring-2 focus:ring-green-500/50 transition-smooth"
               />
             </div>
             
@@ -104,7 +104,7 @@ export function EditDebtModal({ debtId, onClose }: EditDebtModalProps) {
                 step="0.01"
                 value={apr}
                 onChange={(e) => setApr(e.target.value)}
-                className="w-full glass-card rounded-card px-5 py-3 text-white font-mono text-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-smooth"
+                className="w-full glass-card rounded-card px-5 py-3 text-white font-mono text-lg focus:outline-none focus:ring-2 focus:ring-green-500/50 transition-smooth"
               />
             </div>
             
@@ -117,7 +117,7 @@ export function EditDebtModal({ debtId, onClose }: EditDebtModalProps) {
               </button>
               <button
                 onClick={handleSave}
-                className="flex-1 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 rounded-full font-semibold text-white transition-smooth shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50"
+                className="flex-1 px-6 py-3 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 rounded-full font-semibold text-white transition-smooth shadow-lg shadow-green-500/30 hover:shadow-green-500/50"
               >
                 Save Changes
               </button>

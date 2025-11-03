@@ -46,9 +46,9 @@ export function HeroCounters({
             card.label === 'Total Debt' 
               ? 'text-red-400' 
               : card.accent === 'blue'
-              ? 'text-blue-400'
+              ? 'text-green-400'
               : card.accent === 'purple'
-              ? 'text-purple-400'
+              ? 'text-slate-400'
               : 'text-green-400'
           }`}>
             {formatCurrency(card.value)}

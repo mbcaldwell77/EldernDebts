@@ -70,10 +70,10 @@ export default function DebtDashboard() {
     <div className="min-h-screen text-[#ededed] p-10">
       <div className="max-w-7xl mx-auto space-y-10">
         <header className="mb-10">
-          <h1 className="text-5xl font-bold tracking-tight mb-3 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            Eldern Debts
+          <h1 className="font-display text-6xl font-bold tracking-wide mb-3 text-[#16a34a]">
+            Ældern Debts
           </h1>
-          <p className="text-gray-400 text-lg font-medium">Debt tracking and payoff simulation</p>
+          <p className="text-slate-400 text-lg font-medium">Debt tracking and payoff simulation</p>
         </header>
 
         <TodayBanner debts={debts} onPaymentClick={setLogPaymentDebtId} />

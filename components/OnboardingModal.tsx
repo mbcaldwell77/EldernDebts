@@ -78,7 +78,7 @@ export function OnboardingModal({ onComplete }: OnboardingModalProps) {
     <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4 transition-smooth">
       <div className="glass-card rounded-card-lg shadow-elegant-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto transition-smooth">
         <div className="p-10">
-          <h2 className="text-4xl font-bold mb-3 tracking-tight bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Welcome to Eldern Debts</h2>
+          <h2 className="font-display text-5xl font-bold mb-3 tracking-wide text-[#16a34a]">Welcome to Ældern Debts</h2>
           <p className="text-gray-400 mb-10 text-lg font-medium">Let's set up your debt tracking dashboard</p>
           
           {step === 1 && (
@@ -93,7 +93,7 @@ export function OnboardingModal({ onComplete }: OnboardingModalProps) {
                       type="text"
                       value={newDebt.name}
                       onChange={(e) => setNewDebt({ ...newDebt, name: e.target.value })}
-                      className="w-full glass-card rounded-card px-5 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-smooth"
+                      className="w-full glass-card rounded-card px-5 py-3 text-white focus:outline-none focus:ring-2 focus:ring-green-500/50 transition-smooth"
                       placeholder="e.g., Credit Card A"
                     />
                   </div>
@@ -103,7 +103,7 @@ export function OnboardingModal({ onComplete }: OnboardingModalProps) {
                       type="number"
                       value={newDebt.balance}
                       onChange={(e) => setNewDebt({ ...newDebt, balance: e.target.value })}
-                      className="w-full glass-card rounded-card px-5 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-smooth"
+                      className="w-full glass-card rounded-card px-5 py-3 text-white focus:outline-none focus:ring-2 focus:ring-green-500/50 transition-smooth"
                       placeholder="5000"
                     />
                   </div>
@@ -113,7 +113,7 @@ export function OnboardingModal({ onComplete }: OnboardingModalProps) {
                       type="number"
                       value={newDebt.monthly_payment}
                       onChange={(e) => setNewDebt({ ...newDebt, monthly_payment: e.target.value })}
-                      className="w-full glass-card rounded-card px-5 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-smooth"
+                      className="w-full glass-card rounded-card px-5 py-3 text-white focus:outline-none focus:ring-2 focus:ring-green-500/50 transition-smooth"
                       placeholder="150"
                     />
                   </div>
@@ -125,7 +125,7 @@ export function OnboardingModal({ onComplete }: OnboardingModalProps) {
                       max="31"
                       value={newDebt.due_day}
                       onChange={(e) => setNewDebt({ ...newDebt, due_day: e.target.value })}
-                      className="w-full glass-card rounded-card px-5 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-smooth"
+                      className="w-full glass-card rounded-card px-5 py-3 text-white focus:outline-none focus:ring-2 focus:ring-green-500/50 transition-smooth"
                       placeholder="15"
                     />
                   </div>
@@ -136,7 +136,7 @@ export function OnboardingModal({ onComplete }: OnboardingModalProps) {
                       step="0.01"
                       value={newDebt.APR}
                       onChange={(e) => setNewDebt({ ...newDebt, APR: e.target.value })}
-                      className="w-full glass-card rounded-card px-5 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-smooth"
+                      className="w-full glass-card rounded-card px-5 py-3 text-white focus:outline-none focus:ring-2 focus:ring-green-500/50 transition-smooth"
                       placeholder="24.99"
                     />
                   </div>
@@ -155,7 +155,7 @@ export function OnboardingModal({ onComplete }: OnboardingModalProps) {
                 
                 <button
                   onClick={handleAddDebt}
-                  className="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 rounded-full px-6 py-3 font-semibold text-white transition-smooth shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50"
+                  className="w-full bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 rounded-full px-6 py-3 font-semibold text-white transition-smooth shadow-lg shadow-green-500/30 hover:shadow-green-500/50"
                 >
                   Add Debt
                 </button>
@@ -187,7 +187,7 @@ export function OnboardingModal({ onComplete }: OnboardingModalProps) {
                 <button
                   onClick={() => setStep(2)}
                   disabled={debts.length === 0}
-                  className="ml-auto px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 rounded-full font-semibold text-white transition-smooth shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="ml-auto px-8 py-3 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 rounded-full font-semibold text-white transition-smooth shadow-lg shadow-green-500/30 hover:shadow-green-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Next: Preferences
                 </button>
@@ -209,7 +209,7 @@ export function OnboardingModal({ onComplete }: OnboardingModalProps) {
                         onClick={() => setPreferences({ ...preferences, weekStart: day })}
                         className={`px-6 py-3 rounded-full text-sm font-semibold transition-smooth ${
                           preferences.weekStart === day
-                            ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg shadow-blue-500/30'
+                            ? 'bg-gradient-to-r from-green-600 to-green-500 text-white shadow-lg shadow-green-500/30'
                             : 'glass-card text-gray-300 hover:text-white hover:shadow-elegant'
                         }`}
                       >
@@ -238,7 +238,7 @@ export function OnboardingModal({ onComplete }: OnboardingModalProps) {
                         onClick={() => setPreferences({ ...preferences, strategy })}
                         className={`px-6 py-3 rounded-full text-sm font-semibold transition-smooth ${
                           preferences.strategy === strategy
-                            ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg shadow-blue-500/30'
+                            ? 'bg-gradient-to-r from-green-600 to-green-500 text-white shadow-lg shadow-green-500/30'
                             : 'glass-card text-gray-300 hover:text-white hover:shadow-elegant'
                         }`}
                       >
@@ -258,7 +258,7 @@ export function OnboardingModal({ onComplete }: OnboardingModalProps) {
                 </button>
                 <button
                   onClick={() => setStep(3)}
-                  className="ml-auto px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 rounded-full font-semibold text-white transition-smooth shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50"
+                  className="ml-auto px-8 py-3 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 rounded-full font-semibold text-white transition-smooth shadow-lg shadow-green-500/30 hover:shadow-green-500/50"
                 >
                   Next: Review
                 </button>
