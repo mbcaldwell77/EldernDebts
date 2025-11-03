@@ -70,11 +70,14 @@ export function PaymentClusterBar({ debts, showNextMonth }: PaymentClusterBarPro
     ))
   );
   
-  const COLORS = ['#3b82f6', '#8b5cf6', '#ec4899', '#f59e0b', '#10b981', '#6366f1'];
+  const COLORS = ['#10b981', '#14b8a6', '#06b6d4', '#3b82f6', '#8b5cf6', '#ec4899'];
   
   return (
-    <div className="glass-card rounded-card-lg p-8 shadow-elegant transition-smooth">
-      <h2 className="text-2xl font-bold mb-6 tracking-tight">Payment Schedule</h2>
+    <div className="glass-card rounded-xl p-6 shadow-elegant transition-smooth">
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-xl font-bold tracking-tight">Payment Schedule</h2>
+        <span className="text-xs text-gray-400 cursor-pointer hover:text-[#10b981] transition-smooth">View all →</span>
+      </div>
       <ResponsiveContainer width="100%" height={420}>
         <BarChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="rgba(255, 255, 255, 0.1)" />

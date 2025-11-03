@@ -54,10 +54,13 @@ export function AccountsRail({
   };
   
   return (
-    <div className="glass-card rounded-card-lg p-8 shadow-elegant transition-smooth">
-      <h2 className="text-2xl font-bold mb-6 tracking-tight">
-        Accounts {filteredDebtId && <span className="text-sm text-gray-400 font-normal">(filtered)</span>}
-      </h2>
+    <div className="glass-card rounded-xl p-6 shadow-elegant transition-smooth">
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-xl font-bold tracking-tight">
+          Accounts {filteredDebtId && <span className="text-sm text-gray-400 font-normal">(filtered)</span>}
+        </h2>
+        <span className="text-xs text-gray-400 cursor-pointer hover:text-[#10b981] transition-smooth">View all →</span>
+      </div>
       <div className="space-y-4">
         {sortedDebts.length === 0 ? (
           <div className="text-gray-500 text-center py-12 text-lg">No active debts</div>
@@ -72,7 +75,7 @@ export function AccountsRail({
             return (
               <div
                 key={debt.id}
-                className="glass-card rounded-card p-6 border border-gray-700/50 hover:border-gray-600/50 transition-smooth glass-card-hover"
+                className="glass-card rounded-xl p-4 border border-gray-700/30 hover:border-gray-600/50 transition-smooth"
               >
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
@@ -82,7 +85,7 @@ export function AccountsRail({
                         {badge.text}
                       </span>
                       {debt.autopay && (
-                        <span className="text-xs px-3 py-1.5 rounded-full bg-gradient-to-r from-green-600 to-green-500 text-white font-semibold shadow-lg shadow-green-500/30">
+                        <span className="text-xs px-3 py-1.5 rounded-full bg-[#10b981] text-white font-semibold shadow-lg shadow-[#10b981]/30">
                           Autopay
                         </span>
                       )}
@@ -95,7 +98,7 @@ export function AccountsRail({
                     <div className="flex items-center gap-6 text-sm mb-4">
                       <div>
                         <span className="text-gray-400">Payment: </span>
-                        <span className="font-mono font-bold text-green-400">
+                        <span className="font-mono font-bold text-[#10b981]">
                           {formatCurrency(debt.monthly_payment)}
                         </span>
                       </div>
@@ -115,7 +118,7 @@ export function AccountsRail({
                     
                     <div className="w-full bg-gray-800/50 rounded-full h-3 mb-4 overflow-hidden">
                       <div
-                        className="bg-gradient-to-r from-green-600 to-green-500 h-3 rounded-full transition-all duration-300 shadow-lg shadow-green-500/30"
+                        className="bg-[#10b981] h-3 rounded-full transition-all duration-300 shadow-lg shadow-[#10b981]/30"
                         style={{ width: `${progress}%` }}
                       />
                     </div>
@@ -124,7 +127,7 @@ export function AccountsRail({
                   <div className="flex gap-3 ml-6">
                     <button
                       onClick={() => onLogPayment(debt.id)}
-                      className="px-5 py-2.5 text-sm font-semibold bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 rounded-full text-white transition-smooth shadow-lg shadow-green-500/30 hover:shadow-green-500/50"
+                      className="px-5 py-2.5 text-sm font-semibold bg-[#10b981] hover:bg-[#14b8a6] rounded-full text-white transition-smooth shadow-lg shadow-[#10b981]/30 hover:shadow-[#10b981]/50"
                     >
                       Log
                     </button>

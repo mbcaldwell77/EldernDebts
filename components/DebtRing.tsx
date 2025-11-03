@@ -9,7 +9,7 @@ interface DebtRingProps {
   selectedDebtId: string | null;
 }
 
-const COLORS = ['#3b82f6', '#8b5cf6', '#ec4899', '#f59e0b', '#10b981', '#6366f1'];
+const COLORS = ['#10b981', '#14b8a6', '#06b6d4', '#3b82f6', '#8b5cf6', '#ec4899'];
 
 export function DebtRing({ debts, onDebtClick, selectedDebtId }: DebtRingProps) {
   const activeDebts = debts.filter(d => d.active && d.balance > 0);
@@ -31,8 +31,11 @@ export function DebtRing({ debts, onDebtClick, selectedDebtId }: DebtRingProps) 
   };
 
   return (
-    <div className="glass-card rounded-card-lg p-8 shadow-elegant transition-smooth">
-      <h2 className="text-2xl font-bold mb-6 tracking-tight">Debt Distribution</h2>
+    <div className="glass-card rounded-xl p-6 shadow-elegant transition-smooth">
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-xl font-bold tracking-tight">Debt Distribution</h2>
+        <span className="text-xs text-gray-400 cursor-pointer hover:text-[#10b981] transition-smooth">View all →</span>
+      </div>
       {data.length === 0 ? (
         <div className="text-gray-500 text-center py-12 text-lg">No active debts</div>
       ) : (

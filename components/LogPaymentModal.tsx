@@ -56,7 +56,7 @@ export function LogPaymentModal({ debtId, onClose }: LogPaymentModalProps) {
                 step="0.01"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                className="w-full glass-card rounded-card px-5 py-3 text-white font-mono text-lg focus:outline-none focus:ring-2 focus:ring-green-500/50 transition-smooth"
+                className="w-full glass-card rounded-card px-5 py-3 text-white font-mono text-lg focus:outline-none focus:ring-2 focus:ring-[#10b981]/50 transition-smooth"
                 placeholder="0.00"
               />
             </div>
@@ -67,7 +67,7 @@ export function LogPaymentModal({ debtId, onClose }: LogPaymentModalProps) {
                 id="count-toward-cycle"
                 checked={countTowardCycle}
                 onChange={(e) => setCountTowardCycle(e.target.checked)}
-                className="w-5 h-5 rounded accent-green-600 cursor-pointer"
+                className="w-5 h-5 rounded accent-[#10b981] cursor-pointer"
               />
               <label htmlFor="count-toward-cycle" className="text-sm text-gray-300 cursor-pointer hover:text-white transition-smooth">
                 Count toward this payment cycle
@@ -83,7 +83,7 @@ export function LogPaymentModal({ debtId, onClose }: LogPaymentModalProps) {
               </button>
               <button
                 onClick={handleSubmit}
-                className="flex-1 px-6 py-3 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 rounded-full font-semibold text-white transition-smooth shadow-lg shadow-green-500/30 hover:shadow-green-500/50"
+                className="flex-1 px-6 py-3 bg-[#10b981] hover:bg-[#14b8a6] rounded-full font-semibold text-white transition-smooth shadow-lg shadow-[#10b981]/30 hover:shadow-[#10b981]/50"
               >
                 Log Payment
               </button>

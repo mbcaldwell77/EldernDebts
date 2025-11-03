@@ -13,6 +13,8 @@ import { TodayBanner } from '@/components/TodayBanner';
 import { OnboardingModal } from '@/components/OnboardingModal';
 import { LogPaymentModal } from '@/components/LogPaymentModal';
 import { EditDebtModal } from '@/components/EditDebtModal';
+import { Sidebar } from '@/components/Sidebar';
+import { Header } from '@/components/Header';
 
 export default function DebtDashboard() {
   const [debts, setDebts] = useState<Debt[]>([]);
@@ -22,6 +24,7 @@ export default function DebtDashboard() {
   const [logPaymentDebtId, setLogPaymentDebtId] = useState<string | null>(null);
   const [editDebtId, setEditDebtId] = useState<string | null>(null);
   const [filteredDebtId, setFilteredDebtId] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState('dashboard');
 
   useEffect(() => {
     const loadedDebts = getDebts();
@@ -67,70 +70,93 @@ export default function DebtDashboard() {
   const yearTotal = estimatedYearTotal(debts);
 
   return (
-    <div className="min-h-screen text-[#ededed] p-10">
-      <div className="max-w-7xl mx-auto space-y-10">
-        <header className="mb-10">
-          <h1 className="font-display text-6xl font-bold tracking-wide mb-3 text-[#16a34a]">
-            Ældern Debts
-          </h1>
-          <p className="text-slate-400 text-lg font-medium">Debt tracking and payoff simulation</p>
-        </header>
+    <div className="flex min-h-screen bg-[#0f0f0f]">
+      <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
+      
+      <div className="flex-1 flex flex-col">
+        <Header />
+        
+        <div className="flex-1 p-8 overflow-y-auto">
+          <div className="mb-6">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-xl">🏠</span>
+              <h1 className="text-3xl font-bold text-white">My Dashboard</h1>
+            </div>
+            
+            <div className="flex gap-3 mb-8">
+              {['All', 'Withdrawal', 'Savings', 'Deposit'].map((tab) => (
+                <button
+                  key={tab}
+                  className={`px-6 py-2 rounded-full text-sm font-medium transition-smooth ${
+                    tab === 'All'
+                      ? 'bg-[#10b981] text-white'
+                      : 'bg-[#252525] text-gray-400 hover:text-white'
+                  }`}
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
+          </div>
 
-        <TodayBanner debts={debts} onPaymentClick={setLogPaymentDebtId} />
+          <div className="space-y-6">
+            <TodayBanner debts={debts} onPaymentClick={setLogPaymentDebtId} />
 
-        <HeroCounters
-          thisWeek={totals.thisWeek}
-          nextWeek={totals.nextWeek}
-          thisMonth={totals.thisMonth}
-          yearTotal={yearTotal}
-          totalDebt={totals.totalDebt}
-        />
+            <HeroCounters
+              thisWeek={totals.thisWeek}
+              nextWeek={totals.nextWeek}
+              thisMonth={totals.thisMonth}
+              yearTotal={yearTotal}
+              totalDebt={totals.totalDebt}
+            />
 
-        <div className="grid grid-cols-2 gap-10">
-          <StrategyPanel
-            debts={debts}
-            preferences={preferences}
-            onPreferencesChange={handlePreferencesChange}
-          />
-          <DebtRing
-            debts={debts}
-            onDebtClick={setFilteredDebtId}
-            selectedDebtId={filteredDebtId}
-          />
+            <div className="grid grid-cols-2 gap-6">
+              <StrategyPanel
+                debts={debts}
+                preferences={preferences}
+                onPreferencesChange={handlePreferencesChange}
+              />
+              <DebtRing
+                debts={debts}
+                onDebtClick={setFilteredDebtId}
+                selectedDebtId={filteredDebtId}
+              />
+            </div>
+
+            <PaymentClusterBar
+              debts={debts}
+              showNextMonth={preferences.showNextMonthPreview}
+            />
+
+            <AccountsRail
+              debts={debts}
+              filteredDebtId={filteredDebtId}
+              onLogPayment={setLogPaymentDebtId}
+              onEdit={setEditDebtId}
+            />
+          </div>
         </div>
-
-        <PaymentClusterBar
-          debts={debts}
-          showNextMonth={preferences.showNextMonthPreview}
-        />
-
-        <AccountsRail
-          debts={debts}
-          filteredDebtId={filteredDebtId}
-          onLogPayment={setLogPaymentDebtId}
-          onEdit={setEditDebtId}
-        />
-
-        {logPaymentDebtId && (
-          <LogPaymentModal
-            debtId={logPaymentDebtId}
-            onClose={() => {
-              setLogPaymentDebtId(null);
-              refreshDebts();
-            }}
-          />
-        )}
-
-        {editDebtId && (
-          <EditDebtModal
-            debtId={editDebtId}
-            onClose={() => {
-              setEditDebtId(null);
-              refreshDebts();
-            }}
-          />
-        )}
       </div>
+
+      {logPaymentDebtId && (
+        <LogPaymentModal
+          debtId={logPaymentDebtId}
+          onClose={() => {
+            setLogPaymentDebtId(null);
+            refreshDebts();
+          }}
+        />
+      )}
+
+      {editDebtId && (
+        <EditDebtModal
+          debtId={editDebtId}
+          onClose={() => {
+            setEditDebtId(null);
+            refreshDebts();
+          }}
+        />
+      )}
     </div>
   );
 }

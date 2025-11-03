@@ -70,8 +70,11 @@ export function StrategyPanel({
     };
 
     return (
-        <div className="glass-card rounded-card-lg p-8 shadow-elegant transition-smooth">
-            <h2 className="text-2xl font-bold mb-6 tracking-tight">Payoff Strategy</h2>
+        <div className="glass-card rounded-xl p-6 shadow-elegant transition-smooth">
+            <div className="flex items-center justify-between mb-6">
+                <h2 className="text-xl font-bold tracking-tight">Payoff Strategy</h2>
+                <span className="text-xs text-gray-400 cursor-pointer hover:text-[#10b981] transition-smooth">View all →</span>
+            </div>
 
             <div className="space-y-8">
                 <div>
@@ -84,7 +87,7 @@ export function StrategyPanel({
                                 key={strategy}
                                 onClick={() => handleStrategyChange(strategy)}
                                 className={`px-6 py-3 rounded-full text-sm font-semibold transition-smooth ${preferences.strategy === strategy
-                                    ? 'bg-gradient-to-r from-green-600 to-green-500 text-white shadow-lg shadow-green-500/30'
+                                    ? 'bg-[#10b981] text-white shadow-lg shadow-[#10b981]/30'
                                     : 'glass-card text-slate-300 hover:text-white hover:shadow-elegant'
                                     }`}
                             >
@@ -96,7 +99,7 @@ export function StrategyPanel({
 
                 <div>
                     <label className="block text-sm text-gray-400 mb-4 font-medium tracking-wide">
-                        Extra Cash per Month: <span className="text-green-400 font-mono font-bold">{formatCurrency(preferences.extraCash)}</span>
+                        Extra Cash per Month: <span className="text-[#10b981] font-mono font-bold">{formatCurrency(preferences.extraCash)}</span>
                     </label>
                     <div className="relative">
                         <input
@@ -108,7 +111,7 @@ export function StrategyPanel({
                             onChange={(e) => handleExtraCashChange(Number(e.target.value))}
                             className="w-full h-3 bg-gray-800/50 rounded-full appearance-none cursor-pointer slider"
                             style={{
-                                background: `linear-gradient(to right, rgba(22, 163, 74, 0.6) 0%, rgba(22, 163, 74, 0.6) ${(preferences.extraCash / 1500) * 100}%, rgba(255, 255, 255, 0.1) ${(preferences.extraCash / 1500) * 100}%, rgba(255, 255, 255, 0.1) 100%)`
+                                background: `linear-gradient(to right, rgba(16, 185, 129, 0.6) 0%, rgba(16, 185, 129, 0.6) ${(preferences.extraCash / 1500) * 100}%, rgba(255, 255, 255, 0.1) ${(preferences.extraCash / 1500) * 100}%, rgba(255, 255, 255, 0.1) 100%)`
                             }}
                         />
                     </div>
@@ -124,7 +127,7 @@ export function StrategyPanel({
                         id="next-month-preview"
                         checked={preferences.showNextMonthPreview}
                         onChange={(e) => handleNextMonthPreviewChange(e.target.checked)}
-                        className="w-5 h-5 rounded accent-green-600 cursor-pointer"
+                        className="w-5 h-5 rounded accent-[#10b981] cursor-pointer"
                     />
                     <label htmlFor="next-month-preview" className="text-sm text-gray-300 cursor-pointer hover:text-white transition-smooth">
                         Show next month preview in payment schedule

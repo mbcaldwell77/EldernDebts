@@ -33,23 +33,23 @@ export function HeroCounters({
   ];
 
   return (
-    <div className="grid grid-cols-5 gap-6">
+    <div className="grid grid-cols-5 gap-4">
       {cards.map((card) => (
         <div
           key={card.label}
-          className="glass-card rounded-card-lg p-8 shadow-elegant glass-card-hover transition-smooth"
+          className="glass-card rounded-xl p-6 shadow-elegant transition-smooth"
         >
-          <div className="text-sm text-gray-400 mb-3 font-medium tracking-wide uppercase text-xs">
+          <div className="text-xs text-gray-400 mb-2 font-medium uppercase tracking-wider">
             {card.label}
           </div>
-          <div className={`text-3xl font-mono font-bold tracking-tight ${
+          <div className={`text-2xl font-mono font-bold tracking-tight ${
             card.label === 'Total Debt' 
               ? 'text-red-400' 
               : card.accent === 'blue'
-              ? 'text-green-400'
+              ? 'text-[#10b981]'
               : card.accent === 'purple'
               ? 'text-slate-400'
-              : 'text-green-400'
+              : 'text-[#10b981]'
           }`}>
             {formatCurrency(card.value)}
           </div>
