@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-  --glass-bg: rgba(26, 26, 26, 0.75);
-  --glass-border: rgba(255, 255, 255, 0.1);
+  --background: #0B1411;
+  --foreground: #E6ECEA;
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: #1D2B25;
 }
 
 @theme inline {
@@ -20,7 +20,7 @@
 }
 
 body {
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+  background: #0B1411;
   background-attachment: fixed;
   color: var(--foreground);
   font-family: var(--font-inter), system-ui, sans-serif;
@@ -29,17 +29,21 @@ body {
 }
 
 body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(16, 185, 129, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(20, 184, 166, 0.1) 0%, transparent 50%);
-  pointer-events: none;
-  z-index: 0;
+  content: "";
+  position: fixed; inset: -20%;
+  background:
+    radial-gradient(60% 50% at 20% 10%, rgba(18,225,185,0.12), transparent 55%),
+    radial-gradient(40% 35% at 90% 20%, rgba(158,247,233,0.10), transparent 60%),
+    radial-gradient(80% 60% at 50% 90%, rgba(18,225,185,0.08), transparent 60%);
+  pointer-events: none; z-index: 0;
+  filter: blur(40px);
+}
+
+body::after {
+  content: "";
+  position: fixed; inset: 0;
+  background: radial-gradient(60% 70% at 50% 0%, transparent 60%, rgba(0,0,0,0.45) 100%);
+  pointer-events: none; z-index: 0;
 }
 
 .font-mono {
@@ -49,11 +53,11 @@ body::before {
 
 /* Glassmorphism utilities */
 .glass-card {
-  background: rgba(37, 37, 37, 0.5);
-  backdrop-filter: blur(40px) saturate(180%);
-  -webkit-backdrop-filter: blur(40px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  background: var(--glass-bg);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
 }
 
 .glass-card-hover {

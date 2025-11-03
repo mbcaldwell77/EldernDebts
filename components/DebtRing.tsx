@@ -13,7 +13,7 @@ const COLORS = ['#10b981', '#14b8a6', '#06b6d4', '#3b82f6', '#8b5cf6', '#ec4899'
 
 export function DebtRing({ debts, onDebtClick, selectedDebtId }: DebtRingProps) {
   const activeDebts = debts.filter(d => d.active && d.balance > 0);
-  
+
   const data = activeDebts.map((debt) => ({
     name: debt.name,
     value: debt.balance,

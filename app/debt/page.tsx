@@ -15,6 +15,8 @@ import { LogPaymentModal } from '@/components/LogPaymentModal';
 import { EditDebtModal } from '@/components/EditDebtModal';
 import { Sidebar } from '@/components/Sidebar';
 import { Header } from '@/components/Header';
+import GlassCard from '@/components/GlassCard';
+import { GlowPanel } from '@/components/GlowPanel';
 
 export default function DebtDashboard() {
   const [debts, setDebts] = useState<Debt[]>([]);
@@ -102,31 +104,41 @@ export default function DebtDashboard() {
           <div className="space-y-6">
             <TodayBanner debts={debts} onPaymentClick={setLogPaymentDebtId} />
 
-            <HeroCounters
-              thisWeek={totals.thisWeek}
-              nextWeek={totals.nextWeek}
-              thisMonth={totals.thisMonth}
-              yearTotal={yearTotal}
-              totalDebt={totals.totalDebt}
-            />
+            <GlassCard className="p-4">
+              <HeroCounters
+                thisWeek={totals.thisWeek}
+                nextWeek={totals.nextWeek}
+                thisMonth={totals.thisMonth}
+                yearTotal={yearTotal}
+                totalDebt={totals.totalDebt}
+              />
+            </GlassCard>
 
-            <div className="grid grid-cols-2 gap-6">
-              <StrategyPanel
-                debts={debts}
-                preferences={preferences}
-                onPreferencesChange={handlePreferencesChange}
-              />
-              <DebtRing
-                debts={debts}
-                onDebtClick={setFilteredDebtId}
-                selectedDebtId={filteredDebtId}
-              />
+            <div className="grid grid-cols-12 gap-6">
+              <div className="col-span-7 space-y-6">
+                <GlassCard className="p-6">
+                  <StrategyPanel
+                    debts={debts}
+                    preferences={preferences}
+                    onPreferencesChange={handlePreferencesChange}
+                  />
+                </GlassCard>
+                <PaymentClusterBar
+                  debts={debts}
+                  showNextMonth={preferences.showNextMonthPreview}
+                />
+              </div>
+              <div className="col-span-5 space-y-6">
+                <GlowPanel />
+                <GlassCard className="p-6">
+                  <DebtRing
+                    debts={debts}
+                    onDebtClick={setFilteredDebtId}
+                    selectedDebtId={filteredDebtId}
+                  />
+                </GlassCard>
+              </div>
             </div>
-
-            <PaymentClusterBar
-              debts={debts}
-              showNextMonth={preferences.showNextMonthPreview}
-            />
 
             <AccountsRail
               debts={debts}
