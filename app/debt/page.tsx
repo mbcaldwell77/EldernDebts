@@ -70,13 +70,13 @@ export default function DebtDashboard() {
   const yearTotal = estimatedYearTotal(debts);
 
   return (
-    <div className="flex min-h-screen bg-[#0f0f0f]">
+    <div className="flex min-h-screen relative">
       <Sidebar activeTab={activeTab} onTabChange={setActiveTab} />
       
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col relative z-10">
         <Header />
         
-        <div className="flex-1 p-8 overflow-y-auto">
+        <div className="flex-1 p-8 overflow-y-auto relative z-10">
           <div className="mb-6">
             <div className="flex items-center gap-3 mb-6">
               <span className="text-xl">🏠</span>

@@ -1,13 +1,26 @@
 'use client';
 
+import Image from 'next/image';
+
 interface HeaderProps {
   userName?: string;
 }
 
 export function Header({ userName = 'User' }: HeaderProps) {
   return (
-    <div className="h-16 bg-[#1a1a1a] flex items-center justify-between px-8 border-b border-gray-800">
-      <div className="text-2xl font-bold text-white">Ældern Debts</div>
+    <div className="h-16 bg-[#1a1a1a]/80 backdrop-blur-xl flex items-center justify-between px-8 border-b border-white/5 relative z-20">
+      <div className="flex items-center gap-3">
+        <div className="relative w-10 h-10">
+          <Image
+            src="/assets/eldern-debts-logo.png"
+            alt="Ældern Debts Logo"
+            fill
+            className="object-contain"
+            priority
+          />
+        </div>
+        <div className="text-2xl font-bold text-white">Ældern Debts</div>
+      </div>
       
       <div className="flex-1 max-w-md mx-8">
         <div className="relative">
@@ -29,4 +42,3 @@ export function Header({ userName = 'User' }: HeaderProps) {
     </div>
   );
 }
-

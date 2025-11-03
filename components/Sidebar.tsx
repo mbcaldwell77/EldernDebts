@@ -14,7 +14,7 @@ export function Sidebar({ activeTab, onTabChange }: SidebarProps) {
   ];
 
   return (
-    <div className="w-20 bg-[#1a1a1a] flex flex-col items-center py-8 gap-8">
+    <div className="w-20 bg-[#1a1a1a]/80 backdrop-blur-xl flex flex-col items-center py-8 gap-8 relative z-20 border-r border-white/5">
       {menuItems.map((item) => (
         <button
           key={item.id}
